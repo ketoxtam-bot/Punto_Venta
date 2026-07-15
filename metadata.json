@@ -1,0 +1,6 @@
+{
+  "name": "JJM POS System",
+  "description": "Sistema de Punto de Venta (POS) universal y modular adaptado para comercios en México con facturación electrónica SAT CFDI 4.0 e Inteligencia Artificial integrada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
