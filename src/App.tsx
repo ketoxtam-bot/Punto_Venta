@@ -208,6 +208,7 @@ export default function App() {
     role: "ADMINISTRADOR" | "CAJERO" | "SUPERVISOR";
     giro: string;
     customProducts?: any[];
+    connectionMode?: "ONLINE" | "LOCAL";
   }) => {
     try {
       let internalGiro = loginData.giro;
@@ -218,22 +219,39 @@ export default function App() {
       if (loginData.giro.includes("Farmacia")) internalGiro = "FARMACIA";
       if (loginData.giro.includes("Minisuper")) internalGiro = "MINISUPER";
 
-      // Configure business type on Express server
-      const res = await fetch("/api/giro", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ giro: internalGiro, customProducts: loginData.customProducts }),
-      });
+      const targetMode = loginData.connectionMode || "ONLINE";
 
-      if (res.ok) {
-        setUser(loginData);
-        setConnectionMode("ONLINE");
-        setActiveTab("VENTAS");
+      if (targetMode === "ONLINE") {
+        // Configure business type on Express server
+        const res = await fetch("/api/giro", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ giro: internalGiro, customProducts: loginData.customProducts }),
+        });
+
+        if (res.ok) {
+          setUser(loginData);
+          setConnectionMode("ONLINE");
+          setActiveTab("VENTAS");
+        } else {
+          alert("Iniciando en modo local para este giro comercial.");
+          setUser(loginData);
+          setConnectionMode("LOCAL");
+          setActiveTab("VENTAS");
+        }
       } else {
-        alert("Iniciando en modo local para este giro comercial.");
+        // Local mode chosen explicitly
         setUser(loginData);
         setConnectionMode("LOCAL");
         setActiveTab("VENTAS");
+
+        // Seed products locally if backup is empty
+        const backupProducts = localStorage.getItem("jjm_backup_products");
+        if (!backupProducts || JSON.parse(backupProducts).length === 0) {
+          const starter = loginData.customProducts || [];
+          localStorage.setItem("jjm_backup_products", JSON.stringify(starter));
+          setProducts(starter);
+        }
       }
     } catch (err) {
       alert("Iniciando terminal en modo offline aislado debido a indisponibilidad de red.");

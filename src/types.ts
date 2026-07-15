@@ -37,6 +37,7 @@ export interface Product {
   category: string;
   isCompound?: boolean;
   components?: CompoundItem[]; // For packages / bundles
+  images?: string[]; // Multiple photos/URLs for the product
 }
 
 export interface Client {

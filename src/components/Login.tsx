@@ -19,7 +19,9 @@ import {
   CheckCircle,
   HelpCircle,
   TrendingUp,
-  Tag
+  Tag,
+  Wifi,
+  WifiOff
 } from "lucide-react";
 
 interface LoginProps {
@@ -28,6 +30,7 @@ interface LoginProps {
     role: "ADMINISTRADOR" | "CAJERO" | "SUPERVISOR";
     giro: string;
     customProducts?: any[];
+    connectionMode?: "ONLINE" | "LOCAL";
   }) => void;
 }
 
@@ -45,6 +48,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [role, setRole] = useState<"ADMINISTRADOR" | "CAJERO" | "SUPERVISOR">("ADMINISTRADOR");
   const [giro, setGiro] = useState("Miscelánea (Abarrotes)");
   const [showPassword, setShowPassword] = useState(false);
+  const [loginConnectionMode, setLoginConnectionMode] = useState<"ONLINE" | "LOCAL">("ONLINE");
 
   // Custom Giros management
   const [giros, setGiros] = useState<GiroItem[]>([]);
@@ -96,6 +100,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       role,
       giro,
       customProducts,
+      connectionMode: loginConnectionMode,
     });
   };
 
@@ -243,8 +248,10 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             </div>
           </div>
 
-          <div className="text-[9px] text-slate-600 font-mono mt-4 pt-3 border-t border-slate-900">
-            JJM Tecnologías Innovadoras S.A. de C.V. • Terminal POS Inteligente
+          <div className="mt-4 pt-3 border-t border-slate-900 flex flex-col gap-2">
+            <div className="text-[9px] text-slate-600 font-mono text-center">
+              JJM Tecnologías Innovadoras S.A. de C.V. • Terminal POS Inteligente
+            </div>
           </div>
         </div>
 
@@ -325,6 +332,52 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                 </div>
               </div>
 
+              {/* Connection Mode Selection */}
+              <div className="space-y-2">
+                <span className="text-[9px] font-black text-slate-500 uppercase tracking-wider block">
+                  Modo de Operación de la Terminal
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    id="btn-mode-online"
+                    type="button"
+                    onClick={() => setLoginConnectionMode("ONLINE")}
+                    className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between ${
+                      loginConnectionMode === "ONLINE"
+                        ? "bg-emerald-600/10 border-emerald-500 text-white shadow-md shadow-emerald-600/5"
+                        : "bg-slate-900/80 border-slate-800 text-slate-400 hover:bg-slate-850 hover:text-slate-350"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 font-bold text-[10px]">
+                      <Wifi className={`h-3.5 w-3.5 ${loginConnectionMode === "ONLINE" ? "text-emerald-400 animate-pulse" : "text-slate-500"}`} />
+                      En Línea (Cloud)
+                    </div>
+                    <p className="text-[8px] text-slate-500 mt-1 leading-tight">
+                      Sincronización en la nube y reportes SAT automáticos.
+                    </p>
+                  </button>
+
+                  <button
+                    id="btn-mode-local"
+                    type="button"
+                    onClick={() => setLoginConnectionMode("LOCAL")}
+                    className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between ${
+                      loginConnectionMode === "LOCAL"
+                        ? "bg-amber-600/10 border-amber-500 text-white shadow-md shadow-amber-600/5"
+                        : "bg-slate-900/80 border-slate-800 text-slate-400 hover:bg-slate-850 hover:text-slate-350"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 font-bold text-[10px]">
+                      <WifiOff className={`h-3.5 w-3.5 ${loginConnectionMode === "LOCAL" ? "text-amber-400" : "text-slate-500"}`} />
+                      Local (Offline)
+                    </div>
+                    <p className="text-[8px] text-slate-500 mt-1 leading-tight">
+                      Base de datos local aislada. Resistente a caídas de internet.
+                    </p>
+                  </button>
+                </div>
+              </div>
+
               <button
                 id="btn-login-submit"
                 type="submit"
@@ -368,7 +421,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                   required
                   disabled={isGeneratingGiro}
                   placeholder="ej. Ferretería, Cafetería, Veterinaria"
-                  className="w-full bg-slate-950 border border-slate-800 text-slate-150 text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-indigo-500"
                   value={newGiroName}
                   onChange={(e) => setNewGiroName(e.target.value)}
                 />
@@ -382,7 +435,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                   rows={2}
                   disabled={isGeneratingGiro}
                   placeholder="ej. Venta de refacciones, herramientas y artículos de plomería con IVA al 16%."
-                  className="w-full bg-slate-950 border border-slate-800 text-slate-150 text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-indigo-500 resize-none"
+                  className="w-full bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-xs rounded-xl px-4 py-2.5 focus:outline-none focus:border-indigo-500 resize-none"
                   value={newGiroDesc}
                   onChange={(e) => setNewGiroDesc(e.target.value)}
                 />

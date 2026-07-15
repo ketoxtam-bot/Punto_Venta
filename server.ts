@@ -41,56 +41,56 @@ function getDefaultProducts(business: BusinessType): Product[] {
   switch (business) {
     case "ABARROTES":
       return [
-        { id: "ab-1", code: "75010001", name: "Refresco de Cola 355ml", price: 18.0, cost: 11.5, stock: 45, minStock: 15, unit: "pza", taxType: "IVA_16", category: "Bebidas" },
-        { id: "ab-2", code: "75010111", name: "Papas Fritas Saladas 45g", price: 19.5, cost: 13.0, stock: 32, minStock: 10, unit: "pza", taxType: "IEPS_8", category: "Botanas" },
-        { id: "ab-3", code: "75010222", name: "Leche Entera Ultra Pasteurizada 1L", price: 27.0, cost: 22.0, stock: 24, minStock: 8, unit: "pza", taxType: "IVA_0", category: "Lácteos" },
-        { id: "ab-4", code: "75010333", name: "Huevo Blanco Kg", price: 46.0, cost: 36.0, stock: 15, minStock: 5, unit: "kg", taxType: "IVA_0", category: "Básicos" },
-        { id: "ab-5", code: "75010444", name: "Frijoles Refritos Negros Isadora 430g", price: 22.0, cost: 15.5, stock: 20, minStock: 6, unit: "pza", taxType: "IVA_0", category: "Abarrotes" },
-        { id: "ab-6", code: "75010555", name: "Pan de Caja Blanco Bimbo Grande", price: 49.0, cost: 41.0, stock: 12, minStock: 4, unit: "pza", taxType: "IEPS_8", category: "Panadería" }
+        { id: "ab-1", code: "75010001", name: "Refresco de Cola 355ml", price: 18.0, cost: 11.5, stock: 45, minStock: 15, unit: "pza", taxType: "IVA_16", category: "Bebidas", images: ["https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ab-2", code: "75010111", name: "Papas Fritas Saladas 45g", price: 19.5, cost: 13.0, stock: 32, minStock: 10, unit: "pza", taxType: "IEPS_8", category: "Botanas", images: ["https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ab-3", code: "75010222", name: "Leche Entera Ultra Pasteurizada 1L", price: 27.0, cost: 22.0, stock: 24, minStock: 8, unit: "pza", taxType: "IVA_0", category: "Lácteos", images: ["https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ab-4", code: "75010333", name: "Huevo Blanco Kg", price: 46.0, cost: 36.0, stock: 15, minStock: 5, unit: "kg", taxType: "IVA_0", category: "Básicos", images: ["https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ab-5", code: "75010444", name: "Frijoles Refritos Negros Isadora 430g", price: 22.0, cost: 15.5, stock: 20, minStock: 6, unit: "pza", taxType: "IVA_0", category: "Abarrotes", images: ["https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ab-6", code: "75010555", name: "Pan de Caja Blanco Bimbo Grande", price: 49.0, cost: 41.0, stock: 12, minStock: 4, unit: "pza", taxType: "IEPS_8", category: "Panadería", images: ["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=60"] }
       ];
     case "PAPELERIA":
       return [
-        { id: "pap-1", code: "75020001", name: "Libreta Profesional Scribe Raya", price: 35.0, cost: 21.0, stock: 80, minStock: 25, unit: "pza", taxType: "IVA_16", category: "Cuadernos" },
-        { id: "pap-2", code: "75020111", name: "Lápiz Grafito Mirado No. 2", price: 7.5, cost: 3.2, stock: 150, minStock: 30, unit: "pza", taxType: "IVA_16", category: "Escritura" },
-        { id: "pap-3", code: "75020222", name: "Caja Colores Prismacolor 12 piezas", price: 125.0, cost: 82.0, stock: 18, minStock: 5, unit: "pza", taxType: "IVA_16", category: "Arte" },
-        { id: "pap-4", code: "75020333", name: "Cartulina Blanca Standard", price: 6.0, cost: 2.2, stock: 90, minStock: 20, unit: "pza", taxType: "IVA_16", category: "Papeles" },
-        { id: "pap-5", code: "75020444", name: "Cinta Adhesiva Transparente Tuk", price: 18.0, cost: 10.5, stock: 25, minStock: 8, unit: "pza", taxType: "IVA_16", category: "Oficina" },
-        { id: "pap-6", code: "comp-pap", name: "Paquete Escolar Básico Scribe", price: 150.0, cost: 100.0, stock: 15, minStock: 5, unit: "pza", taxType: "IVA_16", category: "Paquetes", isCompound: true, components: [{ productId: "pap-1", quantity: 3 }, { productId: "pap-2", quantity: 2 }, { productId: "pap-3", quantity: 1 }] }
+        { id: "pap-1", code: "75020001", name: "Libreta Profesional Scribe Raya", price: 35.0, cost: 21.0, stock: 80, minStock: 25, unit: "pza", taxType: "IVA_16", category: "Cuadernos", images: ["https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pap-2", code: "75020111", name: "Lápiz Grafito Mirado No. 2", price: 7.5, cost: 3.2, stock: 150, minStock: 30, unit: "pza", taxType: "IVA_16", category: "Escritura", images: ["https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pap-3", code: "75020222", name: "Caja Colores Prismacolor 12 piezas", price: 125.0, cost: 82.0, stock: 18, minStock: 5, unit: "pza", taxType: "IVA_16", category: "Arte", images: ["https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pap-4", code: "75020333", name: "Cartulina Blanca Standard", price: 6.0, cost: 2.2, stock: 90, minStock: 20, unit: "pza", taxType: "IVA_16", category: "Papeles", images: ["https://images.unsplash.com/photo-1603484477859-abe6a73f9366?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pap-5", code: "75020444", name: "Cinta Adhesiva Transparente Tuk", price: 18.0, cost: 10.5, stock: 25, minStock: 8, unit: "pza", taxType: "IVA_16", category: "Oficina", images: ["https://images.unsplash.com/photo-1601247076559-47aca7ff15e9?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pap-6", code: "comp-pap", name: "Paquete Escolar Básico Scribe", price: 150.0, cost: 100.0, stock: 15, minStock: 5, unit: "pza", taxType: "IVA_16", category: "Paquetes", isCompound: true, components: [{ productId: "pap-1", quantity: 3 }, { productId: "pap-2", quantity: 2 }, { productId: "pap-3", quantity: 1 }], images: ["https://images.unsplash.com/photo-1452860687264-0e90189878d8?w=200&auto=format&fit=crop&q=60"] }
       ];
     case "PANADERIA":
       return [
-        { id: "pan-1", code: "1001", name: "Concha de Vainilla Tradicional", price: 12.0, cost: 5.5, stock: 50, minStock: 15, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce" },
-        { id: "pan-2", code: "1002", name: "Bolillo Caliente crujiente", price: 4.5, cost: 1.5, stock: 180, minStock: 40, unit: "pza", taxType: "IVA_0", category: "Pan Blanco" },
-        { id: "pan-3", code: "1003", name: "Oreja de Hojaldre con Azúcar", price: 14.0, cost: 6.8, stock: 40, minStock: 12, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce" },
-        { id: "pan-4", code: "1004", name: "Dona Espolvoreada de Chocolate", price: 13.5, cost: 6.0, stock: 45, minStock: 12, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce" },
-        { id: "pan-5", code: "1005", name: "Cuerno de mantequilla", price: 13.0, cost: 6.2, stock: 35, minStock: 10, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce" },
-        { id: "pan-6", code: "comp-pan", name: "Charola del Antojo (4 Conchas + 2 Donas)", price: 65.0, cost: 34.0, stock: 10, minStock: 3, unit: "pza", taxType: "IEPS_8", category: "Paquetes", isCompound: true, components: [{ productId: "pan-1", quantity: 4 }, { productId: "pan-4", quantity: 2 }] }
+        { id: "pan-1", code: "1001", name: "Concha de Vainilla Tradicional", price: 12.0, cost: 5.5, stock: 50, minStock: 15, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce", images: ["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pan-2", code: "1002", name: "Bolillo Caliente crujiente", price: 4.5, cost: 1.5, stock: 180, minStock: 40, unit: "pza", taxType: "IVA_0", category: "Pan Blanco", images: ["https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pan-3", code: "1003", name: "Oreja de Hojaldre con Azúcar", price: 14.0, cost: 6.8, stock: 40, minStock: 12, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce", images: ["https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pan-4", code: "1004", name: "Dona Espolvoreada de Chocolate", price: 13.5, cost: 6.0, stock: 45, minStock: 12, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce", images: ["https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pan-5", code: "1005", name: "Cuerno de mantequilla", price: 13.0, cost: 6.2, stock: 35, minStock: 10, unit: "pza", taxType: "IEPS_8", category: "Pan Dulce", images: ["https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&auto=format&fit=crop&q=60"] },
+        { id: "pan-6", code: "comp-pan", name: "Charola del Antojo (4 Conchas + 2 Donas)", price: 65.0, cost: 34.0, stock: 10, minStock: 3, unit: "pza", taxType: "IEPS_8", category: "Paquetes", isCompound: true, components: [{ productId: "pan-1", quantity: 4 }, { productId: "pan-4", quantity: 2 }], images: ["https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=200&auto=format&fit=crop&q=60"] }
       ];
     case "CARNICERIA":
       return [
-        { id: "carn-1", code: "2001", name: "Bistec de Res Selecto Kg", price: 185.0, cost: 138.0, stock: 25.5, minStock: 8.0, unit: "kg", taxType: "IVA_0", category: "Res" },
-        { id: "carn-2", code: "2002", name: "Pechuga de Pollo Sin Hueso Kg", price: 115.0, cost: 84.0, stock: 30.0, minStock: 10.0, unit: "kg", taxType: "IVA_0", category: "Aves" },
-        { id: "carn-3", code: "2003", name: "Carne Molida de Res Kg", price: 145.0, cost: 110.0, stock: 18.0, minStock: 5.0, unit: "kg", taxType: "IVA_0", category: "Res" },
-        { id: "carn-4", code: "3001", name: "Jitomate Saladet de Primera", price: 32.0, cost: 16.5, stock: 40.0, minStock: 12.0, unit: "kg", taxType: "IVA_0", category: "Verduras" },
-        { id: "carn-5", code: "3002", name: "Aguacate Hass Selecto", price: 85.0, cost: 52.0, stock: 15.0, minStock: 5.0, unit: "kg", taxType: "IVA_0", category: "Frutas" }
+        { id: "carn-1", code: "2001", name: "Bistec de Res Selecto Kg", price: 185.0, cost: 138.0, stock: 25.5, minStock: 8.0, unit: "kg", taxType: "IVA_0", category: "Res", images: ["https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=200&auto=format&fit=crop&q=60"] },
+        { id: "carn-2", code: "2002", name: "Pechuga de Pollo Sin Hueso Kg", price: 115.0, cost: 84.0, stock: 30.0, minStock: 10.0, unit: "kg", taxType: "IVA_0", category: "Aves", images: ["https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=200&auto=format&fit=crop&q=60"] },
+        { id: "carn-3", code: "2003", name: "Carne Molida de Res Kg", price: 145.0, cost: 110.0, stock: 18.0, minStock: 5.0, unit: "kg", taxType: "IVA_0", category: "Res", images: ["https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=200&auto=format&fit=crop&q=60"] },
+        { id: "carn-4", code: "3001", name: "Jitomate Saladet de Primera", price: 32.0, cost: 16.5, stock: 40.0, minStock: 12.0, unit: "kg", taxType: "IVA_0", category: "Verduras", images: ["https://images.unsplash.com/photo-1595855759920-86582396756a?w=200&auto=format&fit=crop&q=60"] },
+        { id: "carn-5", code: "3002", name: "Aguacate Hass Selecto", price: 85.0, cost: 52.0, stock: 15.0, minStock: 5.0, unit: "kg", taxType: "IVA_0", category: "Frutas", images: ["https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=200&auto=format&fit=crop&q=60"] }
       ];
     case "FARMACIA":
       return [
-        { id: "farm-1", code: "75030001", name: "Paracetamol 500mg Caja c/20 Tabletas", price: 24.5, cost: 6.2, stock: 65, minStock: 15, unit: "pza", taxType: "IVA_0", category: "Analgesicos" },
-        { id: "farm-2", code: "75030111", name: "Loratadina 10mg Caja c/10 Tabletas", price: 45.0, cost: 12.5, stock: 40, minStock: 10, unit: "pza", taxType: "IVA_0", category: "Antialergicos" },
-        { id: "farm-3", code: "75030222", name: "Alcohol Etílico Desnaturalizado Jaloma 250ml", price: 34.0, cost: 18.0, stock: 30, minStock: 8, unit: "pza", taxType: "IVA_16", category: "Material Curacion" },
-        { id: "farm-4", code: "75030333", name: "Gasas Estériles Jaloma 10x10cm c/10", price: 42.0, cost: 22.0, stock: 35, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Material Curacion" },
-        { id: "farm-5", code: "75030444", name: "Geles Desinfectante Antibacterial 500ml", price: 38.0, cost: 19.5, stock: 24, minStock: 6, unit: "pza", taxType: "IVA_16", category: "Higiene" }
+        { id: "farm-1", code: "75030001", name: "Paracetamol 500mg Caja c/20 Tabletas", price: 24.5, cost: 6.2, stock: 65, minStock: 15, unit: "pza", taxType: "IVA_0", category: "Analgesicos", images: ["https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&auto=format&fit=crop&q=60"] },
+        { id: "farm-2", code: "75030111", name: "Loratadina 10mg Caja c/10 Tabletas", price: 45.0, cost: 12.5, stock: 40, minStock: 10, unit: "pza", taxType: "IVA_0", category: "Antialergicos", images: ["https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=200&auto=format&fit=crop&q=60"] },
+        { id: "farm-3", code: "75030222", name: "Alcohol Etílico Desnaturalizado Jaloma 250ml", price: 34.0, cost: 18.0, stock: 30, minStock: 8, unit: "pza", taxType: "IVA_16", category: "Material Curacion", images: ["https://images.unsplash.com/photo-1607619056574-7b8d304f3cbd?w=200&auto=format&fit=crop&q=60"] },
+        { id: "farm-4", code: "75030333", name: "Gasas Estériles Jaloma 10x10cm c/10", price: 42.0, cost: 22.0, stock: 35, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Material Curacion", images: ["https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=200&auto=format&fit=crop&q=60"] },
+        { id: "farm-5", code: "75030444", name: "Geles Desinfectante Antibacterial 500ml", price: 38.0, cost: 19.5, stock: 24, minStock: 6, unit: "pza", taxType: "IVA_16", category: "Higiene", images: ["https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=200&auto=format&fit=crop&q=60"] }
       ];
     case "MINISUPER":
     default:
       return [
-        { id: "ms-1", code: "75040001", name: "Aceite Vegetal Comestible Nutrioli 850ml", price: 43.0, cost: 31.5, stock: 35, minStock: 10, unit: "pza", taxType: "IVA_0", category: "Abarrotes" },
-        { id: "ms-2", code: "75040111", name: "Arroz Súper Extra Valle Verde 1Kg", price: 32.5, cost: 22.0, stock: 40, minStock: 12, unit: "pza", taxType: "IVA_0", category: "Abarrotes" },
-        { id: "ms-3", code: "75040222", name: "Detergente en Polvo Multiusos Ariel 1Kg", price: 54.0, cost: 41.0, stock: 20, minStock: 6, unit: "pza", taxType: "IVA_16", category: "Limpieza" },
-        { id: "ms-4", code: "75040333", name: "Atún en Agua Herdez 130g", price: 21.5, cost: 14.5, stock: 55, minStock: 15, unit: "pza", taxType: "IVA_0", category: "Enlatados" },
-        { id: "ms-5", code: "75040444", name: "Café Soluble Nescafé Clásico 120g", price: 89.0, cost: 68.0, stock: 15, minStock: 5, unit: "pza", taxType: "IVA_0", category: "Desayuno" },
-        { id: "ms-6", code: "75040555", name: "Jabón de Tocador Palmolive Neutro 120g", price: 18.5, cost: 12.0, stock: 50, minStock: 15, unit: "pza", taxType: "IVA_16", category: "Higiene" }
+        { id: "ms-1", code: "75040001", name: "Aceite Vegetal Comestible Nutrioli 850ml", price: 43.0, cost: 31.5, stock: 35, minStock: 10, unit: "pza", taxType: "IVA_0", category: "Abarrotes", images: ["https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ms-2", code: "75040111", name: "Arroz Súper Extra Valle Verde 1Kg", price: 32.5, cost: 22.0, stock: 40, minStock: 12, unit: "pza", taxType: "IVA_0", category: "Abarrotes", images: ["https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ms-3", code: "75040222", name: "Detergente en Polvo Multiusos Ariel 1Kg", price: 54.0, cost: 41.0, stock: 20, minStock: 6, unit: "pza", taxType: "IVA_16", category: "Limpieza", images: ["https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ms-4", code: "75040333", name: "Atún en Agua Herdez 130g", price: 21.5, cost: 14.5, stock: 55, minStock: 15, unit: "pza", taxType: "IVA_0", category: "Enlatados", images: ["https://images.unsplash.com/photo-1534482421-64566f976cfa?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ms-5", code: "75040444", name: "Café Soluble Nescafé Clásico 120g", price: 89.0, cost: 68.0, stock: 15, minStock: 5, unit: "pza", taxType: "IVA_0", category: "Desayuno", images: ["https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&auto=format&fit=crop&q=60"] },
+        { id: "ms-6", code: "75040555", name: "Jabón de Tocador Palmolive Neutro 120g", price: 18.5, cost: 12.0, stock: 50, minStock: 15, unit: "pza", taxType: "IVA_16", category: "Higiene", images: ["https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=200&auto=format&fit=crop&q=60"] }
       ];
   }
 }
@@ -220,6 +220,7 @@ interface Product {
   unit: "pza" | "kg" | "g" | "m" | "l"; // Unidad de medida
   taxType: "IVA_16" | "IVA_0" | "IEPS_8" | "EXENTO"; // Tipo de impuesto SAT aplicable en México
   category: string; // Categoría lógica del producto, ej. "Herramientas"
+  images: string[]; // Un arreglo con exactamente una URL de imagen real y de alta resolución de Unsplash que coincida con el tipo de producto (ej. https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200&auto=format&fit=crop&q=60)
 }
 No incluyas explicaciones en texto plano, devuelve solo el arreglo JSON válido.`;
 
@@ -235,12 +236,12 @@ No incluyas explicaciones en texto plano, devuelve solo el arreglo JSON válido.
     } else {
       // Fallback starter products if Gemini is not configured
       const fallbackProducts = [
-        { id: "cust-1", code: "75099901", name: `${giroName} - Producto General A`, price: 50.0, cost: 35.0, stock: 20, minStock: 5, unit: "pza", taxType: "IVA_16", category: "General" },
-        { id: "cust-2", code: "75099902", name: `${giroName} - Producto General B`, price: 120.0, cost: 80.0, stock: 15, minStock: 4, unit: "pza", taxType: "IVA_16", category: "General" },
-        { id: "cust-3", code: "75099903", name: `${giroName} - Premium C`, price: 250.0, cost: 170.0, stock: 10, minStock: 2, unit: "pza", taxType: "IVA_16", category: "Premium" },
-        { id: "cust-4", code: "75099904", name: `${giroName} - Económico D`, price: 15.0, cost: 9.5, stock: 50, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Económico" },
-        { id: "cust-5", code: "75099905", name: `${giroName} - Servicio E`, price: 80.0, cost: 40.0, stock: 30, minStock: 5, unit: "pza", taxType: "EXENTO", category: "Servicios" },
-        { id: "cust-6", code: "75099906", name: `${giroName} - Granel F`, price: 45.0, cost: 30.0, stock: 40, minStock: 10, unit: "kg", taxType: "IVA_0", category: "Granel" }
+        { id: "cust-1", code: "75099901", name: `${giroName} - Producto General A`, price: 50.0, cost: 35.0, stock: 20, minStock: 5, unit: "pza", taxType: "IVA_16", category: "General", images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&auto=format&fit=crop&q=60"] },
+        { id: "cust-2", code: "75099902", name: `${giroName} - Producto General B`, price: 120.0, cost: 80.0, stock: 15, minStock: 4, unit: "pza", taxType: "IVA_16", category: "General", images: ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&auto=format&fit=crop&q=60"] },
+        { id: "cust-3", code: "75099903", name: `${giroName} - Premium C`, price: 250.0, cost: 170.0, stock: 10, minStock: 2, unit: "pza", taxType: "IVA_16", category: "Premium", images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&auto=format&fit=crop&q=60"] },
+        { id: "cust-4", code: "75099904", name: `${giroName} - Económico D`, price: 15.0, cost: 9.5, stock: 50, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Económico", images: ["https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&auto=format&fit=crop&q=60"] },
+        { id: "cust-5", code: "75099905", name: `${giroName} - Servicio E`, price: 80.0, cost: 40.0, stock: 30, minStock: 5, unit: "pza", taxType: "EXENTO", category: "Servicios", images: ["https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&auto=format&fit=crop&q=60"] },
+        { id: "cust-6", code: "75099906", name: `${giroName} - Granel F`, price: 45.0, cost: 30.0, stock: 40, minStock: 10, unit: "kg", taxType: "IVA_0", category: "Granel", images: ["https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&auto=format&fit=crop&q=60"] }
       ];
       res.json(fallbackProducts);
     }
@@ -248,12 +249,12 @@ No incluyas explicaciones en texto plano, devuelve solo el arreglo JSON válido.
     console.error("Error generating custom giro products:", error);
     // Return high quality fallback
     const fallbackProducts = [
-      { id: "cust-1", code: "75099901", name: `${giroName} - Producto General A`, price: 50.0, cost: 35.0, stock: 20, minStock: 5, unit: "pza", taxType: "IVA_16", category: "General" },
-      { id: "cust-2", code: "75099902", name: `${giroName} - Producto General B`, price: 120.0, cost: 80.0, stock: 15, minStock: 4, unit: "pza", taxType: "IVA_16", category: "General" },
-      { id: "cust-3", code: "75099903", name: `${giroName} - Premium C`, price: 250.0, cost: 170.0, stock: 10, minStock: 2, unit: "pza", taxType: "IVA_16", category: "Premium" },
-      { id: "cust-4", code: "75099904", name: `${giroName} - Económico D`, price: 15.0, cost: 9.5, stock: 50, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Económico" },
-      { id: "cust-5", code: "75099905", name: `${giroName} - Servicio E`, price: 80.0, cost: 40.0, stock: 30, minStock: 5, unit: "pza", taxType: "EXENTO", category: "Servicios" },
-      { id: "cust-6", code: "75099906", name: `${giroName} - Granel F`, price: 45.0, cost: 30.0, stock: 40, minStock: 10, unit: "kg", taxType: "IVA_0", category: "Granel" }
+      { id: "cust-1", code: "75099901", name: `${giroName} - Producto General A`, price: 50.0, cost: 35.0, stock: 20, minStock: 5, unit: "pza", taxType: "IVA_16", category: "General", images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&auto=format&fit=crop&q=60"] },
+      { id: "cust-2", code: "75099902", name: `${giroName} - Producto General B`, price: 120.0, cost: 80.0, stock: 15, minStock: 4, unit: "pza", taxType: "IVA_16", category: "General", images: ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&auto=format&fit=crop&q=60"] },
+      { id: "cust-3", code: "75099903", name: `${giroName} - Premium C`, price: 250.0, cost: 170.0, stock: 10, minStock: 2, unit: "pza", taxType: "IVA_16", category: "Premium", images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&auto=format&fit=crop&q=60"] },
+      { id: "cust-4", code: "75099904", name: `${giroName} - Económico D`, price: 15.0, cost: 9.5, stock: 50, minStock: 10, unit: "pza", taxType: "IVA_16", category: "Económico", images: ["https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&auto=format&fit=crop&q=60"] },
+      { id: "cust-5", code: "75099905", name: `${giroName} - Servicio E`, price: 80.0, cost: 40.0, stock: 30, minStock: 5, unit: "pza", taxType: "EXENTO", category: "Servicios", images: ["https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&auto=format&fit=crop&q=60"] },
+      { id: "cust-6", code: "75099906", name: `${giroName} - Granel F`, price: 45.0, cost: 30.0, stock: 40, minStock: 10, unit: "kg", taxType: "IVA_0", category: "Granel", images: ["https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&auto=format&fit=crop&q=60"] }
     ];
     res.json(fallbackProducts);
   }

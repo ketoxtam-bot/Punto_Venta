@@ -399,24 +399,40 @@ export const SalesRegister: React.FC<SalesRegisterProps> = ({
                     className="p-3 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200 hover:border-blue-200 cursor-pointer flex flex-col justify-between transition-all group"
                   >
                     <div>
-                      <div className="flex justify-between items-start gap-1">
-                        <span className="text-xs font-mono text-slate-400 truncate max-w-[80px]">
-                          {p.code}
-                        </span>
-                        {p.stock <= p.minStock && (
-                          <span className="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.5 rounded font-bold">
-                            Stock Bajo
-                          </span>
+                      <div className="flex gap-2.5">
+                        {p.images && p.images.length > 0 ? (
+                          <img
+                            src={p.images[0]}
+                            alt={p.name}
+                            className="w-11 h-11 object-cover rounded-lg border border-slate-200 shrink-0 bg-slate-50 mt-0.5"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <div className="w-11 h-11 rounded-lg bg-slate-200/50 border border-slate-200 flex items-center justify-center shrink-0 text-slate-400 mt-0.5">
+                            <ShoppingCart className="h-4 w-4 stroke-1" />
+                          </div>
                         )}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex justify-between items-start gap-1">
+                            <span className="text-[9px] font-mono text-slate-400 truncate max-w-[70px]">
+                              {p.code}
+                            </span>
+                            {p.stock <= p.minStock && (
+                              <span className="bg-amber-100 text-amber-800 text-[8px] px-1 py-0.2 rounded font-bold whitespace-nowrap">
+                                Stock Bajo
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="font-semibold text-slate-800 text-[11px] line-clamp-2 mt-0.5 group-hover:text-blue-700 leading-tight">
+                            {p.name}
+                          </h4>
+                          <p className="text-[9px] text-slate-500 bg-slate-200/60 inline-block px-1.5 py-0.2 rounded-md mt-0.5 font-medium">
+                            {p.category}
+                          </p>
+                        </div>
                       </div>
-                      <h4 className="font-semibold text-slate-800 text-xs line-clamp-2 mt-1 group-hover:text-blue-700">
-                        {p.name}
-                      </h4>
-                      <p className="text-[10px] text-slate-500 bg-slate-200/60 inline-block px-1.5 py-0.5 rounded-md mt-1 font-medium">
-                        {p.category}
-                      </p>
                     </div>
-                    <div className="flex justify-between items-baseline mt-3">
+                    <div className="flex justify-between items-baseline mt-3 border-t border-slate-100 pt-1.5">
                       <span className="text-[11px] text-slate-400 font-medium">
                         {p.stock} {p.unit}
                       </span>
@@ -565,13 +581,27 @@ export const SalesRegister: React.FC<SalesRegisterProps> = ({
                     exit={{ opacity: 0, x: -50 }}
                     className="bg-slate-800/50 p-3 rounded-xl flex items-center justify-between gap-3 border border-slate-800"
                   >
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-slate-100 text-xs truncate">
-                        {product.name}
-                      </h4>
-                      <p className="text-[10px] text-slate-400 font-mono mt-0.5">
-                        ${product.price.toFixed(2)} x {product.unit} ({product.taxType})
-                      </p>
+                    <div className="flex-1 min-w-0 flex items-center gap-2">
+                      {product.images && product.images.length > 0 ? (
+                        <img
+                          src={product.images[0]}
+                          alt={product.name}
+                          className="w-8 h-8 object-cover rounded-md border border-slate-700 shrink-0 bg-slate-900"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="w-8 h-8 rounded-md bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 text-slate-500">
+                          <ShoppingCart className="h-3.5 w-3.5" />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-semibold text-slate-100 text-xs truncate">
+                          {product.name}
+                        </h4>
+                        <p className="text-[10px] text-slate-400 font-mono mt-0.5">
+                          ${product.price.toFixed(2)} x {product.unit} ({product.taxType})
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-2">

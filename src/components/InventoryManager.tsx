@@ -58,6 +58,8 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
   const [unit, setUnit] = useState<"pza" | "kg" | "g" | "m" | "l">("pza");
   const [taxType, setTaxType] = useState<"IVA_16" | "IVA_0" | "IEPS_8" | "EXENTO">("IVA_16");
   const [category, setCategory] = useState("");
+  const [productImages, setProductImages] = useState<string[]>([]);
+  const [imageUrlInput, setImageUrlInput] = useState("");
 
   // Add Supplier Form State
   const [showAddSupplierModal, setShowAddSupplierModal] = useState(false);
@@ -95,6 +97,7 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
       unit,
       taxType,
       category,
+      images: productImages,
     };
 
     try {
@@ -122,6 +125,8 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
     setUnit(p.unit);
     setTaxType(p.taxType);
     setCategory(p.category);
+    setProductImages(p.images || []);
+    setImageUrlInput("");
     setShowAddProductModal(true);
   };
 
@@ -143,6 +148,8 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
     setUnit("pza");
     setTaxType("IVA_16");
     setCategory("");
+    setProductImages([]);
+    setImageUrlInput("");
   };
 
   const handleSaveSupplier = async (e: React.FormEvent) => {
@@ -345,14 +352,28 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
                   <tr key={p.id} className="hover:bg-slate-50/40 transition-colors">
                     <td className="py-3.5 px-4 font-mono text-[11px] text-slate-500">{p.code}</td>
                     <td className="py-3.5 px-4">
-                      <div>
-                        <p className="font-bold text-slate-900">{p.name}</p>
-                        <p className="text-[10px] text-slate-400">Unidad: {p.unit}</p>
-                        {p.isCompound && (
-                          <span className="bg-purple-100 text-purple-800 text-[9px] px-1.5 py-0.2 rounded font-black uppercase mt-1 inline-block">
-                            Paquete Compuesto
-                          </span>
+                      <div className="flex items-center gap-3">
+                        {p.images && p.images.length > 0 ? (
+                          <img
+                            src={p.images[0]}
+                            alt={p.name}
+                            className="w-10 h-10 object-cover rounded-lg border border-slate-250 shrink-0 bg-slate-50 shadow-sm"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 text-slate-400">
+                            <Package className="h-5 w-5 stroke-1" />
+                          </div>
                         )}
+                        <div>
+                          <p className="font-bold text-slate-900">{p.name}</p>
+                          <p className="text-[10px] text-slate-400">Unidad: {p.unit}</p>
+                          {p.isCompound && (
+                            <span className="bg-purple-100 text-purple-800 text-[9px] px-1.5 py-0.2 rounded font-black uppercase mt-1 inline-block">
+                              Paquete Compuesto
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </td>
                     <td className="py-3.5 px-4 font-medium">{p.category}</td>
@@ -613,6 +634,95 @@ export const InventoryManager: React.FC<InventoryManagerProps> = ({
                     <option value="IEPS_8">IEPS 8% (Comida chatarra/Pan dulce)</option>
                     <option value="EXENTO">Exento</option>
                   </select>
+                </div>
+              </div>
+
+              {/* Fotos del Producto */}
+              <div className="border-t border-slate-100 pt-4 space-y-3">
+                <label className="block text-xs font-bold text-slate-700 uppercase">Fotos del Producto (Una o Más)</label>
+                
+                {/* Upload or URL selector */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                  <div className="space-y-1.5">
+                    <span className="block text-[10px] font-bold text-slate-500 uppercase">Subir Imagen Local</span>
+                    <label className="flex flex-col items-center justify-center border border-dashed border-slate-300 rounded-lg py-2.5 px-3 bg-white hover:bg-blue-50/20 cursor-pointer transition-all">
+                      <Plus className="h-4 w-4 text-blue-600 mb-0.5" />
+                      <span className="text-[10px] font-semibold text-slate-600">Seleccionar Archivo</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        className="hidden"
+                        onChange={(e) => {
+                          const files = e.target.files;
+                          if (files) {
+                            Array.from(files).forEach((file: any) => {
+                              const reader = new FileReader();
+                              reader.onload = (event) => {
+                                if (event.target?.result) {
+                                  setProductImages((prev) => [...prev, event.target!.result as string]);
+                                }
+                              };
+                              reader.readAsDataURL(file);
+                            });
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <span className="block text-[10px] font-bold text-slate-500 uppercase">Agregar URL de Imagen</span>
+                      <div className="flex gap-1.5 mt-1">
+                        <input
+                          type="text"
+                          placeholder="https://ejemplo.com/foto.jpg"
+                          className="flex-1 bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          value={imageUrlInput}
+                          onChange={(e) => setImageUrlInput(e.target.value)}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (imageUrlInput.trim()) {
+                              setProductImages((prev) => [...prev, imageUrlInput.trim()]);
+                              setImageUrlInput("");
+                            }
+                          }}
+                          className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 rounded-lg text-[10px] transition-colors"
+                        >
+                          Añadir
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Grid of current product images */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {productImages.length === 0 ? (
+                    <p className="text-[10px] text-slate-400 italic">No se han agregado fotos para este producto.</p>
+                  ) : (
+                    productImages.map((img, index) => (
+                      <div key={index} className="relative w-14 h-14 rounded-lg overflow-hidden border border-slate-200 group bg-slate-50 shadow-sm">
+                        <img
+                          src={img}
+                          alt={`Foto ${index + 1}`}
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setProductImages((prev) => prev.filter((_, i) => i !== index))}
+                          className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white"
+                          title="Eliminar Foto"
+                        >
+                          <X className="h-4 w-4 text-rose-400" />
+                        </button>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
 
