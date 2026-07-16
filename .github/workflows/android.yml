@@ -1,0 +1,50 @@
+name: Compilar APK (Web POS)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar Código
+      uses: actions/checkout@v4
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Instalar Dependencias de la App
+      run: |
+        npm install
+        npm install @capacitor/core @capacitor/cli @capacitor/android --save-dev
+
+    - name: Construir Proyecto Web
+      run: |
+        npm run build --if-present
+
+    - name: Inicializar Capacitor (Android)
+      run: |
+        npx cap init "FIDX POS" "com.fidx.nfcapp" --web-dir=.
+        npx cap add android
+
+    - name: Configurar Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Compilar APK de Android
+      run: |
+        cd android
+        chmod +x gradlew
+        ./gradlew assembleDebug
+
+    - name: Guardar y Entregar APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: fidx-nfc-apk
+        path: android/app/build/outputs/apk/debug/app-debug.apk
